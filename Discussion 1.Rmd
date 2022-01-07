@@ -1,0 +1,66 @@
+---
+title: "Discussion 1"
+author: "Deanna Elliott"
+date: "1/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(palmerpenguins)
+```
+
+REPREX: Highlight, Addins, 'Render Reprex', choose target venue, paste
+
+```{r}
+
+# Working GitHub 
+library(tidyverse)
+turtle_stats <- tribble(~name, ~width, ~length,
+                        "Timmy", 60, 72,
+                        "Tanya", 67, 80,
+                        "Tank", 55, 67,
+                        "Thomasina", 34, 50)
+
+ggplot(data = turtle_stats,
+       aes(x = width, y = length)) +
+  geom_point() 
+
+
+# Broken GitHub
+
+library(tidyverse)
+library(palmerpenguins)
+
+penguins %>% 
+  group_by(Species, Sex) %>% 
+  summarise(mean_mass = mean(body_mass_g))
+
+
+# Working Slack
+
+library(tidyverse)
+library(palmerpenguins)
+
+penguins %>% 
+  group_by(species, sex) %>% 
+  summarise(mean_mass = mean(body_mass_g))
+
+# Broken Slack
+
+library(tidyverse)
+turtle_stats <- tribble(~name, ~width, ~length, ~ juvenile,
+                        "Timmy", 60, 72, 0,
+                        "Tanya", 67, 80, 0,
+                        "Tank", 55, 67, 1,
+                        "Thomasina", 34, 50, 1)
+
+ggplot(data = turtle_stats,
+       aes(x = width, y = length)) +
+  geom_point() +
+  facet_wrap(juvenile)
+
+```
+

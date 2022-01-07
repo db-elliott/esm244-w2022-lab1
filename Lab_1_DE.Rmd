@@ -1,0 +1,38 @@
+---
+title: "Lab 1"
+author: "Deanna Elliott"
+date: "1/6/2022"
+output: html_document
+---
+
+```{r setup, include=TRUE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(here)
+library(sf)
+library(tmap)
+```
+
+### Read In Data
+
+```{r}
+
+sf_trees <- read_csv(here("data", "sf_trees", "sf_trees.csv"), show_col_types = FALSE)
+```
+
+### Wrangling & ggplot Review
+
+**Example 1**: Find counts of observations by legal status and wrangle a bit
+
+```{r}
+
+# Method 1: group_by() %>%  summarize ()
+
+sf_trees %>% 
+  group_by(legal_status) %>% 
+  summarize(tree_count = n())
+```
+
+
+
